@@ -92,6 +92,33 @@ docker image rm unsloth-docker-unsloth
 MIT – feel free to fork & improve!
 
 
+1. Server neustarten
+Führe einen sauberen Neustart durch, damit der neue Kernel und der NVIDIA-Treiber geladen werden:
+Generated bash
+sudo reboot
+Use code with caution.
+Bash
+2. Nach dem Neustart: Treiber überprüfen
+Logge dich wieder ein und überprüfe, ob der NVIDIA-Treiber jetzt korrekt läuft. Gib diesen Befehl ein:
+Generated bash
+nvidia-smi
+Use code with caution.
+Bash
+Wenn alles geklappt hat, solltest du eine Tabelle sehen, die deine RTX 2070 Super auflistet, zusammen mit der Treiberversion (sollte 550 sein) und dem CUDA-Level.
+3. Container neu starten
+Da der Treiber nun läuft, können wir den Container, dessen Image bereits fertig gebaut wurde, einfach starten.
+Generated bash
+# Wechsle wieder in den Projektordner
+cd /home/nik/unsloth-docker/
+
+# Starte den Container (diesmal wird es sehr schnell gehen)
+docker compose up -d
+Use code with caution.
+Bash
+Der Befehl docker compose up -d startet die in docker-compose.yml definierten Dienste im Hintergrund (-d für "detached").
+Du kannst mit docker ps überprüfen, ob der Container unsloth_jupyter jetzt läuft.
+
+
 
 ## Im Jupyter Notebook Terminal:
 
