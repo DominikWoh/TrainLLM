@@ -42,7 +42,8 @@ FROM nvidia/cuda:12.4.1-devel-ubuntu22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
-    build-essential git curl wget vim && rm -rf /var/lib/apt/lists/*
+    build-essential git curl wget vim cmake libcurl4-openssl-dev && \
+    rm -rf /var/lib/apt/lists/*
 
 # Miniconda
 RUN wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh && \
@@ -57,6 +58,11 @@ SHELL ["conda", "run", "-n", "unsloth_env", "/bin/bash", "-c"]
 
 RUN pip install --upgrade pip && \
     pip install "unsloth[cu124-torch250] @ git+https://github.com/unslothai/unsloth.git"
+
+# 🦙 llama.cpp klonen & bauen
+RUN git clone https://github.com/ggerganov/llama.cpp.git && \
+    cd llama.cpp && rm -rf build && mkdir build && cd build && \
+    cmake .. && cmake --build .
 
 WORKDIR /workspace
 CMD ["conda","run","--no-capture-output","-n","unsloth_env", \
