@@ -21,7 +21,7 @@ Dieses Repository enthält ein **vollautomatisches Bash-Skript**, das Unsloth sa
 ## 🚀 Schnellstart
 
 ```bash
-git clone https://github.com/<DEIN_USERNAME>/unsloth-oneshot.git
+git clone https://github.com/dominikwoh/TrainLLM.git
 cd unsloth-oneshot
 chmod +x install_unsloth_docker.sh
 sudo ./install_unsloth_docker.sh
