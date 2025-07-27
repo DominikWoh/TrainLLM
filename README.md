@@ -109,7 +109,7 @@ Wenn alles geklappt hat, solltest du eine Tabelle sehen, die deine RTX 2070 Supe
 Da der Treiber nun läuft, können wir den Container, dessen Image bereits fertig gebaut wurde, einfach starten.
 Generated bash
 # Wechsle wieder in den Projektordner
-cd /home/nik/unsloth-docker/
+cd /home/user/unsloth-docker/
 
 # Starte den Container (diesmal wird es sehr schnell gehen)
 docker compose up -d
